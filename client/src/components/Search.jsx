@@ -8,6 +8,7 @@ const Search = ({ onSearch }) => {
     setTerm(e.target.value);
   }
 
+  // Should submit a post request to the server --> API --> server --> Database --> server --> client
   const search = () => {
     onSearch(term);
   }
