@@ -16,7 +16,6 @@ let getReposByUsername = (username) => {
   };
 
   return axios(options)
-    .then((repos) => console.log('++++++', repos.data))
 }
 
 module.exports.getReposByUsername = getReposByUsername;
