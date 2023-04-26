@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/fetcher');
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/ghFetcher');
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  _id: Number
-  name: String
-  owner: String
-  createdAt: Date
-  updatedAt: Date
-  html_url: String
+  _id: Number,
+  name: String,
+  owner: String,
+  createdAt: Date,
+  updatedAt: Date,
+  html_url: String,
   description: String
 
 });
@@ -26,4 +26,8 @@ let save = (repoData) => { // Pass in the object received from the controller
     // .then((savedData) => console.log('This is the saved data:' savedData))
 }
 
-module.exports.save = save;
+let getTop = () => {
+  return Repo.find().sort({updatedAt: -1}).limit(25).exec();
+}
+
+module.exports = { save, getTop }
